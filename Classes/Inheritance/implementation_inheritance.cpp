@@ -3,8 +3,9 @@
 using std::cout;
 using std::endl;
 
-typedef int Item;  
+typedef int Item;
 
+//? Demonstrates a set of building blocks using a set of classes
 class LinkListElement
 {
 private:
@@ -13,7 +14,7 @@ private:
 public:
    LinkListElement() { data = nullptr; next = nullptr; }
    LinkListElement(Item *i) { data = i; next = nullptr; }
-   ~LinkListElement() { delete static_cast<Item *>(data); next = nullptr; }
+   ~LinkListElement() { delete static_cast<Item *>(data); next = nullptr; }   // Casts an Item to a Void type (data)
    void *GetData() { return data; }
    LinkListElement *GetNext() { return next; }
    void SetNext(LinkListElement *e) { next = e; }
@@ -58,7 +59,7 @@ LinkListElement *LinkList::RemoveAtFront()
 {
    LinkListElement *remove = head;
    head = head->GetNext();  // head = head->next;
-   current = head;    // reset current for usage elsewhere
+   current = head;  // reset current for usage elsewhere
    return remove;
 }
  
@@ -66,7 +67,7 @@ void LinkList::DeleteAtFront()
 {
    LinkListElement *deallocate;
    deallocate = RemoveAtFront();
-   delete deallocate;    // destructor will delete data, set next to NULL
+   delete deallocate;  // destructor will delete data, set next to NULL
 }
  
 void LinkList::Print() 
@@ -78,7 +79,7 @@ void LinkList::Print()
    current = head;
    while (current)
    {
-      output = *(static_cast<Item *>(current->GetData()));
+      output = *(static_cast<Item *>(current->GetData()));  // Returns a void *data, its necessary to get up-casted to Item
       cout << output << " ";
       current = current->GetNext();
    }
@@ -98,7 +99,7 @@ int main()
    *item1 = 100;
    Item *item2 = new Item(200);
 
-   // create an element for the Linked List
+   // create an element for the Linked List and allocate memory (Call the second constructor)
    LinkListElement *element1 = new LinkListElement(item1);
 
    // create a linked list and initialize with one node (element)
@@ -112,7 +113,7 @@ int main()
    list1.Print();                // print out contents of list
 
    // delete elements from list, one by one
-   while (!(list1.IsEmpty()))
+   while (!(list1.IsEmpty())) // If not true
    {
       list1.DeleteAtFront();
       cout << "List 1 after removing an item: ";
