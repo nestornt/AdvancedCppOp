@@ -86,7 +86,7 @@ Person::Person(const Person &p) : name(p.name), second_name(p.second_name), age(
 // Destructor
 Person::~Person()
 {
-    cout << "Person destructor called" << endl;
+    cout << "Person destructor called, deleted object -> " << this << endl;
     delete title;
 }
 // Function Definitions
@@ -138,7 +138,10 @@ Student::Student(const Student &s) : Person(s), classroom(s.classroom), gpa(s.gp
 {
     cout << "Student copy constructor called" << endl;
 }
-Student::~Student() { cout << "Student destructor called" << endl; }
+Student::~Student()
+{
+    cout << "Student destructor called, object -> " << this << " will be deleted after calling parent destructor" << endl;
+}
 // Functions
 void Student::Print()
 {
