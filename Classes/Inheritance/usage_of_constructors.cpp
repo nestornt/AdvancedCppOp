@@ -9,7 +9,7 @@ class Person
 private:
     char *name;
     char *title;
-    public:
+public:
     Person(); // various constructors
     Person(const char *, const char *);
     Person(const Person &);

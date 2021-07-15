@@ -65,7 +65,7 @@ void LinkList::InsertAtFront(Item *theItem)
 
 LinkListElement *LinkList::RemoveAtFront()
 {
-   LinkListElement *remove = head;
+   LinkListElement *remove = head;  // head is the initial memory address
    head = head->GetNext();  // head = head->next;
    current = head;    // reset current for usage elsewhere
    return remove;    
@@ -118,7 +118,7 @@ void LinkList::InsertAtEnd(Item *item)
    }
    else
    {
-      tail->SetNext(new LinkListElement(item));
+      tail->SetNext(new LinkListElement(item));  // constructs and sends the LinkListElement as an r-value
       tail = tail->GetNext();
    }
 }
@@ -178,7 +178,7 @@ Item *Queue::Dequeue()
 {
    LinkListElement *temp;
    temp = RemoveAtFront();
-   Item *item = new Item(*(static_cast<Item *>(temp->GetData()))); // make copy of temp's data
+   Item *item = new Item(*(static_cast<Item *>(temp->GetData()))); // make copy of temp's data (dereference the returned pointer)
    delete temp; 
    return item;
 }
