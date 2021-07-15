@@ -51,7 +51,7 @@ public:
     Person(const Person &);
     ~Person();
     // Function Protoypes
-    void Print() const;
+    virtual void Print() const;
     // Inline Functions
     const string &GetName() const { return name; }
     const string &GetSecondName() const { return second_name; }
@@ -109,7 +109,7 @@ public:
     Student(const Student &);
     ~Student();
     // Function Protoypes
-    void Print();
+    virtual void Print() const override;
     //Inline functions
     const string &GetClassroom() const { return classroom; }
     float Getgpa() const { return gpa; }
@@ -144,7 +144,7 @@ Student::~Student()
     cout << "Student destructor called, object -> " << this << " will be deleted after calling parent destructor" << endl;
 }
 // Functions
-void Student::Print()
+void Student::Print() const
 {
     Person::Print();
     cout << "Also is assisting to " << classroom;
