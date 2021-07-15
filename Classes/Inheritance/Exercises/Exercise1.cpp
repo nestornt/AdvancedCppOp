@@ -113,6 +113,7 @@ public:
     //Inline functions
     const string &GetClassroom() const { return classroom; }
     float Getgpa() const { return gpa; }
+    void ModifyAge(int age) { Person::ModifyAge(age); }
     // Inline protype
     void SetClassroom(const string &);
 
@@ -157,6 +158,8 @@ int main()
     Student *s1 = new Student("Pierre", "Crane", 30, 'J', "Graduated", "Medicine", 4.1);
 
     cout << "The first person assisting is " << p1.GetName() << " " << p1.GetSecondName() << '\n';
+    s1->SetClassroom("IT");
+    s1->ModifyAge(31);
     s1->Print();
 
     delete p2;
