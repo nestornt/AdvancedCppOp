@@ -58,6 +58,7 @@ Person::Person(const Person &p) :
 Person::~Person()
 {
    // release memory for any dynamically allocated data members
+   cout << "Person Destructor called" << endl;
 }
 
 void Person::ModifyTitle(const string &newTitle)
@@ -140,6 +141,7 @@ Student::Student(const Student &s) : Person(s),
 Student::~Student()
 {
    // release memory for any dynamically allocated data members
+   cout << "Student Destructor called" << endl;
 
 }
 
@@ -178,7 +180,9 @@ int main()
        people[i]->IsA();
        cout << "  ";
        people[i]->Print();
-    } 
+    }
+
+    cout << '\n';
 
     for (int i = 0; i < MAX; i++)
        delete people[i];   // engage virtual dest. sequence
