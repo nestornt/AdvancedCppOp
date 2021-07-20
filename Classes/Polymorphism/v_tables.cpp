@@ -14,10 +14,10 @@ public: // but we will show only virtual functions here
     virtual void Greeting(const char *);
 
     /* V-TABLE CLASS PERSON
-       Array of function pointers: 0->Person::~Person()
-                                   1->Person::Print()
-                                   2->Person::Isa()
-                                   3->Person::Greeting()
+       Array of function pointers(vptr): 0->Person::~Person()
+                                         1->Person::Print()
+                                         2->Person::Isa()
+                                         3->Person::Greeting()
     */
 };
 class Student: public Person
@@ -29,11 +29,11 @@ public: // assume all member functions are as before,
     virtual void Print() const override;
     virtual void IsA() override;
 
-    /* V-TABLE CLASS STUDENT
-       Array of function pointers: 0->Student::~Student()
-                                   1->Student::Print()
-                                   2->Student::Isa()
-                                   3->Person::Greeting() // Not overriden so wont change
+    /* V-TABLE CLASS STUDENT 
+       Array of function pointers(vptr): 0->Student::~Student()
+                                         1->Student::Print()
+                                         2->Student::Isa()
+                                         3->Person::Greeting() // Not overriden so wont change
     */
 };
 
